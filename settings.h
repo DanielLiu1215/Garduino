@@ -1,0 +1,9 @@
+#define ThingSpeak_IP "184.106.153.149"
+#define lcdUpdateFrequency 5000
+#define manualTriggerDelay 10000
+#define backlightTimeLimit 60000
+#define buttonBlinkSpeed 127
+#define uploadFrequency 600
+#define dry 50
+#define wet 80
+#define maxFloweringTime 600

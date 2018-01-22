@@ -1,0 +1,27 @@
+Graduino Error Codes
+
+checkEsp8266Status
+0	Network status OK
+-2	Connection error, restarting...
+-1	Can't find "AT+CIPSTATUS", restarting...
+
+getTalkBackCommands
+0	TalkBack Commands received
+-4	Invalid TalkBack Command(s)!
+-3	Error while reading responds
+-2	Unable to send request"));
+-1	ERROR while connecting to server
+
+updateChannelFeed
+0	Data sent
+-3	Error while sending data
+-2	Unable to send feeds
+-1	ERROR while connecting to server
+
+DHTLIB
+0	OK
+-1	ERROR_CHECKSUM
+-2	ERROR_TIMEOUT
+-3	ERROR_CONNECT
+-4	ERROR_ACK_L
+-5	ERROR_ACK_H
