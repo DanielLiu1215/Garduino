@@ -1,5 +1,8 @@
 void setupEsp8266() {
   wdt_reset();
+  lcd.clear();
+  lcd.home();
+  lcd.print(F("Initalizing ESP8266"));
   DEBUG_PRINTLN(F("Initalizing ESP8266..."));
   espSeiral_Flush();
   espSeiral_Println(F("AT+CWAUTOCONN=0"));
@@ -12,7 +15,10 @@ void setupEsp8266() {
   espSeiral_Println(F("AT+CWMODE_CUR=1"));
   espSeiral_Flush();
   delay(500);
-  espSeiral_Println(F("AT+CWJAP_CUR=\"Daniel's_Home\",\"00871215\",\"30:b5:c2:57:48:3c\""));
+  char atSend[70];
+  sprintf(atSend, "AT+CWJAP_CUR=\"%s\",\"%s\",\"%s\"\r\n", WiFi_SSID, WiFi_password, AP_MAC);
+  DEBUG_PRINT(atSend);
+  espSeiral_Print(atSend);
   espSeiral_Flush();
   delay(2000);
   wdt_reset();
@@ -21,13 +27,18 @@ void setupEsp8266() {
 
 int checkEsp8266Status() {
   wdt_reset();
+  lcd.clear();
+  lcd.home();
+  lcd.print(F("Checking internet"));
+  lcd.setCursor(0, 1);
+  lcd.print(F("connection..."));
   DEBUG_PRINTLN(F("Checking internet connection..."));
   espSeiral_Println(F("AT+CIPCLOSE"));
   espSeiral_Flush();
   espSeiral_ReadString();
   espSeiral_Println(F("AT+CIPSTATUS"));
   espSeiral_Flush();
-  //DEBUG_PRINTLN(espSeiral_ReadString());
+//  DEBUG_PRINTLN(espSeiral_ReadString());
   if (espSeiral_Find("AT+CIPSTATUS") && espSeiral_Find("STATUS:")) {
     int atCipStatus = espSeiral_ParseInt();
     if (atCipStatus == 2 || atCipStatus == 4) {
@@ -46,15 +57,13 @@ int checkEsp8266Status() {
 void updateChannelFeed() {
   int statusFlag;
   wdt_reset();
-  lcd.clear();
-  lcd.home();
-  lcd.print(F("Uploading data,"));
-  lcd.setCursor (0, 1);
-  lcd.print(F("please wait..."));
   unsigned long oldTime = millis();
   while (checkEsp8266Status() != 0) {
     setupEsp8266();
   }
+  lcd.clear();
+  lcd.home();
+  lcd.print(F("Uploading feed..."));
   collectData();
   char atCmd[40];
   sprintf(atCmd, "AT+CIPSTART=\"TCP\",\"%s\",80", ThingSpeak_IP);

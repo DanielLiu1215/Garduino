@@ -21,16 +21,8 @@ void flowering() {
         waterSwitch = false;
       }
       buttonTrigger = false;
-      if (waterSwitch) {
-        lcd.home();
-        lcd.print(F("Water is turned ON"));
-      } else {
-        lcd.home();
-        lcd.print(F("Water is turned OFF"));
-      }
       triggeredIndication();
-      wdt_reset();
-      delay(5000);
+      wdt_reset(); 
     }
   } else if (waterSwitch) {
     moist1 = moistureMeasrue(moistureSensor1, moistureSensorPower1);
@@ -46,6 +38,15 @@ void flowering() {
     oldWaterSwitch = waterSwitch;
     updateChannelFeed();
     lastUploadTime = millis();
+    lcd.clear();
+    if (waterSwitch) {
+      lcd.home();
+      lcd.print(F("Water is turned ON"));
+    } else {
+      lcd.home();
+      lcd.print(F("Water is turned OFF"));
+    }
+    lastLcdUpdateTime = millis();
   }
 }
 

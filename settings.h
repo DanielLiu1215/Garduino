@@ -1,3 +1,6 @@
+#define WiFi_SSID "Daniel's_Home"
+#define WiFi_password "00871215"
+#define AP_MAC "30:b5:c2:57:48:3c"
 #define ThingSpeak_IP "184.106.153.149"
 #define lcdUpdateFrequency 5000
 #define manualTriggerDelay 10000

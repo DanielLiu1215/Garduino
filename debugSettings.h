@@ -12,7 +12,7 @@ AltSoftSerial esp8266Serial; //RX: pin8, TX: pin9
 #define espSeiral_Read()        esp8266Serial.read()
 
 //debug serial
-#define DEBUG_BEGIN()           Serial.begin(19200)
+#define DEBUG_BEGIN()           Serial.begin(115200)
 #define DEBUG_PRINT(...)        Serial.print(__VA_ARGS__)
 #define DEBUG_PRINTLN(...)      Serial.println(__VA_ARGS__)
 

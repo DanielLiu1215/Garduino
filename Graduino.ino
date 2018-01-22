@@ -7,7 +7,7 @@
 #include <avr/wdt.h>
 #include "settings.h"
 
-//#define DEBUG
+#define DEBUG
 
 #ifdef DEBUG
   #include "debugSettings.h"
@@ -39,7 +39,7 @@ void setup() {
   wdt_enable(WDTO_8S);
   lcd.begin (20, 4);
   lcd.setBacklight(backlight);
-  lcd.print("Initalizing...");
+  lcd.print(F("Initalizing..."));
 
   DEBUG_BEGIN();
   espSeiral_Begin();
