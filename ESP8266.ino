@@ -58,7 +58,7 @@ void updateChannelFeed() {
   int statusFlag;
   wdt_reset();
   unsigned long oldTime = millis();
-  while (checkEsp8266Status() != 0) {
+  for(int i = 0; i < retryConnectionTime && checkEsp8266Status() != 0; i++){
     setupEsp8266();
   }
   lcd.clear();

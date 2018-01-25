@@ -8,11 +8,15 @@
 #include "settings.h"
 
 #define DEBUG
+//#define FRONTYARD
+//#define BACKYARD
 
-#ifdef DEBUG
+#if defined(DEBUG)
   #include "debugSettings.h"
-#else
-  #include "normalSettings.h"
+#elif defined(FRONTYARD)
+  #include "frontyardSettings.h"
+#elif defined(BACKYARD)
+  #include "backyardSettings.h"
 #endif
 
 boolean waterSwitch = false;

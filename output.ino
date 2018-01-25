@@ -37,7 +37,6 @@ void flowering() {
   if (oldWaterSwitch != waterSwitch) {
     oldWaterSwitch = waterSwitch;
     updateChannelFeed();
-    lastUploadTime = millis();
     lcd.clear();
     if (waterSwitch) {
       lcd.home();
