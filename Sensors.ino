@@ -26,9 +26,14 @@ int moistureMeasrue(int analogPin, int powerPin) {
 
 void collectData() {
   dhtChk = dhtMeasure();
-  moist1 = moistureMeasrue(moistureSensor1, moistureSensorPower1);
-  moist2 = moistureMeasrue(moistureSensor2, moistureSensorPower2);
-  light = map(analogRead(lightSensor), 0, 1023, 0, 100);
+  #ifdef FRONTYARD
+    moist1 = moistureMeasrue(moistureSensor1, moistureSensorPower1);
+    light = map((analogRead(lightSensor)*(long)96), 0, 102300, 0, 100); //offset for a different photoresistor
+  #else
+    moist1 = moistureMeasrue(moistureSensor1, moistureSensorPower1);
+    moist2 = moistureMeasrue(moistureSensor2, moistureSensorPower2);
+    light = map(analogRead(lightSensor), 0, 1023, 0, 100);
+  #endif
 }
 
 void checkButtom(int pin) {

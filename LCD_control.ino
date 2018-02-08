@@ -2,7 +2,7 @@ void screenUpdate() {
   displayType = !displayType;
   lcd.clear();
   lcd.home();
-  lcd.print(F("Graduino System"));
+  lcd.print(F("Garduino System"));
   if (displayType == 1) {
     lcd.setCursor(0, 1);
     lcd.print(F("Temp:"));

@@ -16,14 +16,14 @@
 
 //pin set
 #define buttonPin 4
-#define buttonLEDPin 3
+#define buttonLEDPin 3  //LOW active
 #define relay 10  //LOW active
 #define moistureSensorPower1 11
 #define moistureSensorPower2 12
-#define moistureSensor1 A0
-#define moistureSensor2 A1
-#define lightSensor A2
-#define dhtPin 7
+#define moistureSensor1 A1
+#define moistureSensor2 A2
+#define lightSensor A0
+#define dhtPin 6
 
 //APIKeys
 #define WriteAPIKey "WMJ2324E08A8XJN1"

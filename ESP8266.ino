@@ -55,6 +55,7 @@ int checkEsp8266Status() {
 }
 
 void updateChannelFeed() {
+  lastUploadTime = millis();
   int statusFlag;
   wdt_reset();
   unsigned long oldTime = millis();
@@ -103,7 +104,6 @@ void updateChannelFeed() {
   timeForUpload = millis() - oldTime;
   DEBUG_PRINT(timeForUpload / 1000.0);
   DEBUG_PRINT("sec\r\n\r\n");
-  lastUploadTime = millis();
   screenUpdate();
 }
 
