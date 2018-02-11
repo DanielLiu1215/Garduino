@@ -1,0 +1,26 @@
+AT+UART_DEF=9600,8,1,0,0
+AT+CWMODE_DEF=1
+AT+CWLAP
+AT+CWJAP_DEF="Daniel's_Home","00871215","30:b5:c2:57:48:3c"
+AT+CIPSTATUS
+
+AT+CIPSTART="TCP","184.106.153.149",80
+AT+CIPSEND=52
+GET /update?key=3Q5TW8490XAXGTGF&field1=1&field2=1
+PUT /talkbacks/17503/commands/7635115?api_key=2FL9IU85V75MTBXN&command_string=ON
+
+esptool.py -p /dev/cu.usbserial-A506LLZ2 write_flash 0x00000 /Users/DanielLiu/Desktop/Ai-Thinker_ESP8266_DOUT_V1.5.4.1_20161202/Ai-Thinker_ESP8266_DOUT_8Mbit_V1.5.4.1_20161202.bin
+
+
+GET /talkbacks/17503/commands/7635115?api_key=2FL9IU85V75MTBXN
+
+PUT /talkbacks/17503/commands/7635115?api_key=2FL9IU85V75MTBXN&command_string=OFF
+
+GET /update?key=MWS8I17J49Y5O2KL&field1=29&field2=65&field3=OK&field4=50&field5=47&field6=15&field7=0
+
+PUT /talkbacks/17503/commands/7635115?api_key=2FL9IU85V75MTBXN&command_string=ON
+
+2.82842712474619
+4.188790204786391
+119.38
+78.11
